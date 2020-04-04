@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package endorsing;
+
+service v1 {
+    rpc Endorse(Endorsement) returns (EndorsementResponse) {}
+    rpc EndorseStream(Subscribe) returns (stream EndorsementStream) {}
+}
+
+message Endorsement {
+    string Block = 1;
+    string SignedOperation = 2;
+}
+
+message EndorsementResponse {
+    bool success = 1;
+    string err = 2;
+}
+
+message EndorsementStream {
+     
+}
+
+message Subscribe {
+    string uuid = 1;
+}

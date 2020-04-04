@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package baking;
+
+service v1 {
+    rpc Bake(Block) returns (BlockResponse) {}
+    rpc BakeStream(Subscribe) returns (stream BakingStream) {}
+}
+
+
+message Block {
+    string Block = 1;
+    string SignedOperation = 2;
+}
+
+message BlockResponse {
+    bool success = 1;
+    string err = 2;
+}
+
+message BakingStream {
+    
+}
+
+message Subscribe {
+    string uuid = 1;
+}
